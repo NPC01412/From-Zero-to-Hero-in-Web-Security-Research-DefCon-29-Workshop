@@ -5,9 +5,16 @@ const logger = require('morgan');
 const fileUpload = require('express-fileupload');           // handle file uploads
 const session = require('express-session');
 const bodyParser = require('body-parser');
-
+const mongoose = require('mongoose');
 const urls = require('./routes/urls');
 const api = require('./routes/api');
+
+mongoose.connect('mongodb://127.0.0.1:27017/challenge', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+    .then(() => console.log(" Connected to DB Success!"))
+    .catch(err => console.log(" DB Connection Error:", err));
 
 const app = express();
 
@@ -82,8 +89,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
-
+//module.exports = app;
+const port = 3000; // 你可以設定你想要的 Port
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
 
 /*
 /////////////////////////////
