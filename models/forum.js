@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/challenge', { useNewUrlParser: true } );
-
+//mongoose.connect('mongodb://127.0.0.1:27017/challenge', {useNewUrlParser: true,useUnifiedTopology: true});
 const Schema = mongoose.Schema;
 
 const forumDataSchema = new Schema({
